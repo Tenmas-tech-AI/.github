@@ -1,0 +1,17 @@
+# .github/workflows/pr-agent.yml
+name: PR Agent (Reusable)
+
+on:
+  workflow_call:
+    secrets:
+      OPENAI_API_KEY:
+        required: true
+
+jobs:
+  pr_agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
