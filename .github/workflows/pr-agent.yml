@@ -9,12 +9,13 @@ on:
 jobs:
   pr_agent:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: read
     steps:
       - uses: Codium-ai/pr-agent@main
         env:
-          OPENAI_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          OPENAI.API_TYPE: "anthropic"
-          OPENAI.API_BASE: "https://api.anthropic.com"
           CONFIG.AI_PROVIDER: "anthropic"
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
